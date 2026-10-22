@@ -1,0 +1,26 @@
+<% if (page.type === 'categories') { %>
+  <article class="post">
+    <h1 class="post-title"><%= page.title %></h1>
+    <div class="post-content">
+      <% var items = site.categories.sort('-length'); %>
+      <ul class="category-list">
+      <% items.each(function(cat){ %>
+        <li><a href="<%- url_for(cat.path) %>"><%= cat.name %></a> <span class="count">(<%= cat.length %>)</span></li>
+      <% }); %>
+      </ul>
+    </div>
+  </article>
+<% } else if (page.type === 'tags') { %>
+  <article class="post">
+    <h1 class="post-title"><%= page.title %></h1>
+    <div class="post-content">
+      <ul class="tag-list">
+      <% site.tags.sort('-length').each(function(tag){ %>
+        <li><a href="<%- url_for(tag.path) %>"><%= tag.name %></a> <span class="count">(<%= tag.length %>)</span></li>
+      <% }); %>
+      </ul>
+    </div>
+  </article>
+<% } else { %>
+  <%- partial('../../../node_modules/hexo-theme-landscape/layout/page', {}) %>
+<% } %>
