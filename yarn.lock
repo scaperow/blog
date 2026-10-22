@@ -886,6 +886,11 @@ fsevents@^1.0.0:
     bindings "^1.5.0"
     nan "^2.12.1"
 
+fsevents@~2.3.2:
+  version "2.3.3"
+  resolved "https://registry.npmmirror.com/fsevents/-/fsevents-2.3.3.tgz"
+  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
+
 function-bind@^1.1.2:
   version "1.1.2"
   resolved "https://registry.npmmirror.com/function-bind/-/function-bind-1.1.2.tgz"
@@ -1020,6 +1025,11 @@ hasown@^2.0.0, hasown@^2.0.2, hasown@^2.0.3, hasown@^2.0.4:
   integrity sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==
   dependencies:
     function-bind "^1.1.2"
+
+hexo-blog-encrypt@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.npmmirror.com/hexo-blog-encrypt/-/hexo-blog-encrypt-4.1.0.tgz"
+  integrity sha512-4z4O2cC7A5w+DkJ0AMlRmt5kq1bWqInuNEYTUsqy9YaHrr+ZQAyDzIDtkA1x1KFels2g761JCORekiz8TxAokg==
 
 hexo-cli@^4.3.2:
   version "4.3.2"
@@ -1238,7 +1248,7 @@ hexo-util@^4.0.0:
     prismjs "^1.29.0"
     strip-indent "^3.0.0"
 
-hexo@^8.0.0:
+hexo@^8.0.0, hexo@>=5:
   version "8.1.2"
   resolved "https://registry.npmmirror.com/hexo/-/hexo-8.1.2.tgz"
   integrity sha512-gmpNwL1KnbK12q551ZhGxqvSw8M88ZSjFKOhx6ybUYz1phjPdwGewMgBgwGmjcVcIYFq6tWQAv1MRil/sBrPHQ==

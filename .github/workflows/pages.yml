@@ -26,6 +26,10 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
       - name: Build
+        env:
+          # 文章加密密码：在仓库 Settings → Secrets and variables → Actions 中配置
+          # 没有配置时，加密文章会构建失败（这是有意为之，避免误把明文发布出去）
+          BLOG_ENCRYPT_PASSWORD: ${{ secrets.BLOG_ENCRYPT_PASSWORD }}
         run: npx hexo generate
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

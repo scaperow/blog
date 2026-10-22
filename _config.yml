@@ -111,3 +111,23 @@ deploy:
   repo: git@github.com:scaperow/blog.git
   branch: gh-pages
   message: "deploy: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+
+# -------- 文章加密 (hexo-blog-encrypt) --------
+# 只加密 front-matter 里写了 password 的文章，其余不受影响。
+# 密码由构建环境变量提供（GitHub Secrets），不要写进本文件：
+#   本地:  BLOG_ENCRYPT_PASSWORD=xxx npx hexo generate
+#   CI  :  在仓库 Secrets 里配置 BLOG_ENCRYPT_PASSWORD
+encrypt:
+  abstract: 这篇文章已加密，请输入密码查看。
+  message: 请输入访问密码
+  theme: default
+  wrong_pass_message: 密码不正确，请重试。
+  decryptButton:
+    text: 解密
+  # 同一浏览器解密过一次后，本次会话内自动放行（存在 localStorage）
+  autoSave: true
+  # 由 permalink 派生 salt，重新构建后已解密的浏览器仍能自动放行
+  stableSalt: true
+  silent: false
+  kdf:
+    iterations: 600000
