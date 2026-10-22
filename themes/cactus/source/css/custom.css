@@ -1,0 +1,360 @@
+/* ==========================================================================
+   自托管字体（woff2，仅拉丁字符；中文回退系统字体）
+   ========================================================================== */
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../fonts/newsreader-latin-300-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/newsreader-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/newsreader-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/newsreader-latin-400-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../fonts/inter-latin-300-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/inter-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/inter-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/inter-latin-600-normal.woff2") format("woff2");
+}
+
+/* ==========================================================================
+   风景侠 — Cactus 主题定制样式
+   目标：暖白纸质感 + 衬线标题 + 舒适的英文/中文混排
+   ========================================================================== */
+
+/* ---------- 字体栈 ----------
+   拉丁字符用 Newsreader（衬线）/ Inter（无衬线），
+   中文紧跟其后回退到系统黑体，避免中文被衬线体渲染得发虚。 */
+:root {
+  /* 衬线：拉丁用 Newsreader，中文依次回退宋体类（macOS/Windows/Android/Linux）。
+     中文衬线在更多系统上可用，标题会更有纸媒感。 */
+  --font-serif: "Newsreader", "Songti SC", "STSong", "Source Han Serif SC",
+                "Noto Serif CJK SC", "Noto Serif SC", "SimSun", "Serif", Georgia, serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "PingFang SC",
+               "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC",
+               "Noto Sans CJK SC", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+
+  --paper: #faf9f7;
+  --ink: #22272a;
+  --ink-soft: #5f6469;
+  --accent: #2f6f68;
+  --rule: rgba(34, 39, 42, 0.12);
+}
+
+/* ---------- 基础排版 ---------- */
+body {
+  font-family: var(--font-sans);
+  font-size: 16.5px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  background-color: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 中文段落需要更松的行距与更弱的字距 */
+body p {
+  letter-spacing: 0.015em;
+}
+
+/* Cactus 默认在宽屏对段落做两端对齐；中文会被拉出难看的字间距，改为左对齐。
+   （英文长文两端对齐还行，但本站以中文为主，左对齐更稳。） */
+@media (min-width: 480px) {
+  .article-entry p,
+  #post-body p,
+  p {
+    text-align: left;
+  }
+}
+
+/* 中英混排断行：允许在汉字之间断行，避免长 URL 撑破版面 */
+.article-entry,
+#post-body {
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-break: normal;
+}
+
+/* ---------- 标题：衬线体 ---------- */
+h1, h2, h3, h4, h5, h6,
+#header .logo-title,
+#header .logo-subtitle,
+.post-title,
+.article-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+}
+
+h1 { font-size: 2.05rem; line-height: 1.3; }
+h2 { font-size: 1.5rem; line-height: 1.4; margin-top: 2.4em; }
+h3 { font-size: 1.2rem; line-height: 1.5; }
+
+/* ---------- 文章标题 ---------- */
+#header .logo-title {
+  font-size: 1.75rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.post-title,
+.article-title {
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+/* ---------- 导航 ---------- */
+#header nav {
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+}
+
+#header nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+#header nav a:hover {
+  color: var(--accent);
+}
+
+/* ---------- 正文链接 ---------- */
+.article-entry a,
+#post-body a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(47, 111, 104, 0.35);
+  transition: border-color 0.18s ease;
+}
+
+.article-entry a:hover,
+#post-body a:hover {
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- 正文内的代码 ---------- */
+.article-entry p code,
+.article-entry li code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  padding: 0.12em 0.38em;
+  border-radius: 3px;
+  background: rgba(34, 39, 42, 0.055);
+  color: #3d4348;
+}
+
+/* 代码块 */
+.article-entry pre,
+.highlight {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  line-height: 1.7;
+  border-radius: 5px;
+}
+
+/* ---------- 引用 ---------- */
+.article-entry blockquote {
+  font-family: var(--font-serif);
+  font-size: 1.04rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--rule);
+  padding-left: 1.1em;
+}
+
+/* ---------- 图片：轻微纸感边框 ---------- */
+.article-entry img,
+figure img {
+  border-radius: 4px;
+  height: auto;
+}
+
+/* ---------- 文章列表：更像外文博客的稀疏感 ---------- */
+.articles .item > a,
+.articles a {
+  font-family: var(--font-serif);
+}
+
+/* ---------- 分隔线更轻 ---------- */
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
+/* ---------- 页脚 ---------- */
+#footer {
+  font-size: 0.82rem;
+}
+
+#footer a {
+  color: var(--ink-soft);
+}
+
+/* ---------- 加密文章卡片适配 ---------- */
+.hbe-container,
+.hbe-input,
+.hbe-button {
+  font-family: var(--font-sans) !important;
+}
+
+.hbe-button {
+  border-radius: 4px;
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+/* ---------- 窄屏微调 ---------- */
+@media (max-width: 640px) {
+  body {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  h1 { font-size: 1.65rem; }
+  h2 { font-size: 1.3rem; }
+  #header .logo-title { font-size: 1.5rem; }
+}
+
+
+/* ---------- 分类 / 标签页：书签式排版 ---------- */
+#categories .category-list-title,
+#tag-cloud .tag-cloud-title {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 1.6rem;
+}
+
+#categories ul.cat-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  columns: 2;
+  column-gap: 2.5rem;
+}
+
+#categories ul.cat-list li {
+  break-inside: avoid;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+#categories ul.cat-list a {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0;
+}
+
+#categories ul.cat-list a:hover {
+  color: var(--accent);
+}
+
+#categories ul.cat-list .count {
+  float: right;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  opacity: 0.7;
+}
+
+/* 标签云：收紧字号跨度，更克制 */
+#tag-cloud .tag-cloud-tags a {
+  font-family: var(--font-sans) !important;
+  color: var(--ink-soft);
+  text-decoration: none;
+  margin: 0 0.35rem;
+  transition: color 0.18s ease;
+}
+
+#tag-cloud .tag-cloud-tags a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  #categories ul.cat-list { columns: 1; }
+}
+
+
+/* ---------- 首页“查看全部”链接 ---------- */
+.more-link {
+  margin-top: 2.2rem;
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+}
+
+.more-link a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.more-link a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.more-link .arrow {
+  margin-left: 0.25em;
+  transition: margin-left 0.18s ease;
+}
+
+.more-link a:hover .arrow {
+  margin-left: 0.5em;
+}
+
+/* 站点描述稍大一点，作为首页的“导语” */
+#about p {
+  font-family: var(--font-serif);
+  font-size: 1.06rem;
+  color: var(--ink);
+}

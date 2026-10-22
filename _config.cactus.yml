@@ -1,0 +1,62 @@
+##############################################################################
+# Cactus 主题配置 —— 风景侠博客
+##############################################################################
+
+# 项目页链接
+projects_url: https://github.com/scaperow
+
+direction: ltr
+
+# 顶部导航
+nav:
+  home: /
+  articles: /archives/
+  category: /categories/
+  tag: /tags/
+
+# 社交链接（只保留你实际使用的；不需要的整条删掉）
+social_links:
+  -
+    icon: github
+    label: GitHub
+    link: https://github.com/scaperow
+  -
+    icon: rss
+    label: RSS
+    link: /atom.xml
+
+# 首页是否显示标签云（false = 只显示文章列表，更干净）
+tags_overview: false
+
+# 首页文章列表
+posts_overview:
+  show_all_posts: false
+  post_count: 10
+  sort_updated: false
+
+archive:
+  sort_updated: false
+
+post:
+  show_updated: false
+
+##############################################################################
+# Appearance
+##############################################################################
+
+# classic = 暖白纸质感；light = 更灰一点的纸；dark / white 可选
+colorscheme: classic
+
+# 正文最大宽度（rem）。46 约等于 736px，适合长文阅读
+page_width: 46
+
+# 代码高亮配色
+highlight: github
+
+disqus_shortname:
+google_analytics:
+  enabled: false
+  id:
+baidu_analytics:
+  enabled: false
+  id:
