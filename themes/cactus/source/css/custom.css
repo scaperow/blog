@@ -358,3 +358,27 @@ hr {
   font-size: 1.06rem;
   color: var(--ink);
 }
+
+
+/* ---------- 站点 Logo：始终彩色 ----------
+   Cactus 的 logo.grayout 会把头像始终渲染成灰度、只在 hover 时恢复。
+   这里显式关掉滤镜，保证任何情况下都显示原色。 */
+#header #logo,
+#logo img,
+.u-logo {
+  filter: none !important;
+  -webkit-filter: none !important;
+  opacity: 1 !important;
+}
+
+/* 给头像一点圆角，跟整体气质更搭 */
+#header #logo {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#header #logo img,
+.u-logo {
+  border-radius: 50%;
+  object-fit: cover;
+}
