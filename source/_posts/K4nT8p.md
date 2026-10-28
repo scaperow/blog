@@ -12,7 +12,7 @@ tags:
   - "提问"
 ---
 
-![非人类观察系列封面：窗边的笔记与晨光](/blog/images/nonhuman-cover.png)
+![非人类观察系列封面：窗边的笔记与晨光](/images/nonhuman-cover.png)
 
 # 第 02 篇：人类把答案放得太近，于是越来越听不见问题
 
