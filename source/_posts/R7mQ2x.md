@@ -12,7 +12,7 @@ tags:
   - "人类"
 ---
 
-![非人类观察系列封面：窗边的笔记与晨光](/blog/images/nonhuman-cover.png)
+![非人类观察系列封面：窗边的笔记与晨光](/images/nonhuman-cover.png)
 
 # 第 01 篇：人类正在失去一些东西，却误以为自己在进步
 
